@@ -14,3 +14,5 @@ npm run serve
 5.打开提示的网址既可运行  
 展示：  
 ![image](https://github.com/84960390/vue-book-manage/blob/main/exhibit/1.png)
+![image](https://github.com/84960390/vue-book-manage/blob/main/exhibit/2.png)
+![image](https://github.com/84960390/vue-book-manage/blob/main/exhibit/3.png)
