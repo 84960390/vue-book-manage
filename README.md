@@ -1,7 +1,7 @@
 # vue-book-manage
 基于vue+mysql+node+express+elementui的前后端分离图书管理系统
-使用步骤，  
-本地运行方法
+使用步骤:  
+本地运行方法  
 &ensp;1.新建一个名为books_manage_system的数据库  
 &ensp;2.将根目录下books_manage_system.sql文件导入到该数据库中，   
 &ensp;3.在node/sql/booksystem.js文件内根据自己的数据库情况进行修改    
@@ -18,7 +18,7 @@
 &ensp;1.将根目录下books_manage_system.sql文件导入到数据库中    
 &ensp;2.在node/sql/booksystem.js文件内根据自己的数据库情况进行修改    
 &ensp;3.在books文件夹和node文件夹下分别执行npm install安装插件  
-&ensp; 4.在books文件夹下执行npm run build打包前端文件，打包完成后将该目录新增的dist文件夹复制到node文件夹中
+&ensp; 4.在books文件夹下执行npm run build打包前端文件，打包完成后将该目录新增的dist文件夹复制到node文件夹中  
 &ensp;5.打包完成后将dist文件夹复制到node文件夹下  
 &ensp;6.解开node/index.js文件下第38行代码的注释  
 &ensp;7.在node文件夹下执行node index.js  
