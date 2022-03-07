@@ -37,7 +37,6 @@ app.use(express.urlencoded({extended:false}))
 app.use(cors());
 // app.use(express.static('dist'));
 app.use(expressJWT({secret:secretkey,algorithms:['HS256']}).unless({path:[/^\/login/,/^\/book\/picimg/]}))
-// app.use(expressJWT({secret:secretkey,algorithms:['HS256']}).unless({path:[/^(?!\/student)/,/^(?!\/books)/,/^(?!\/checktoken)/,/^(?!\/admin)/]}))
 
 
 app.use(express.static('bookpic'));
