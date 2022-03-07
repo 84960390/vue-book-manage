@@ -30,7 +30,7 @@ export default {
               this.$router.replace('/login');
           }
       })
-      .catch(err=>console.log(err))
+      .catch(err=> this.$router.replace('/login'))
     }
   }
   ,created(){

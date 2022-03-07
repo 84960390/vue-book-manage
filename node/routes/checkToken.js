@@ -7,7 +7,7 @@ checkToken.get('/checktoken',(req,res)=>{
       }
       throw 'err'
     }catch{
-      res.status(401).send({msg:'服务器错误'});
+      res.status(401).send({msg:'用户验证失败'});
     }
    
 })

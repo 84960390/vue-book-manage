@@ -8,8 +8,8 @@ const path=require('path');
 // 获取post请求中的参数
 const bodyParser=require('body-parser');
 const expressJWT=require('express-jwt');
-
-
+// history模式插件
+const history = require('connect-history-api-fallback');
 // 路由模块
 const login=require('./routes/login');
 const studentInfo = require('./routes/studentinfo');
@@ -31,14 +31,17 @@ const addBooks = require('./routes/addBooks');
 
 // token秘钥
 const secretkey='bookmanage';
-
+app.use(history());
 app.use(bodyParser());
-
 app.use(express.urlencoded({extended:false}))
 app.use(cors());
+// app.use(express.static('dist'));
 app.use(expressJWT({secret:secretkey,algorithms:['HS256']}).unless({path:[/^\/login/,/^\/book\/picimg/]}))
+// app.use(expressJWT({secret:secretkey,algorithms:['HS256']}).unless({path:[/^(?!\/student)/,/^(?!\/books)/,/^(?!\/checktoken)/,/^(?!\/admin)/]}))
+
 
 app.use(express.static('bookpic'));
+
 
 // token错误处理中间件
 app.use((err,req,res,next)=>{

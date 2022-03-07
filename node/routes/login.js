@@ -7,10 +7,8 @@ const secret = require('../common/secret');
 studentLogin.post('/studentlogin', (req, res) => {
     booksystem.query('select password,id,account from  students where account=?', req.body.account, (err, results) => {
         try {
-            console.log(err)
-            console.log(results)
             if (results[0].password === req.body.password) {
-                res.send({
+               return  res.send({
                     status: 0,
                     msg: '登录成功',
                     data: results[0],
@@ -20,11 +18,13 @@ studentLogin.post('/studentlogin', (req, res) => {
 
                     )
                 })
-                return
             }
-        } catch (err) {
             res.status(422).send({
                 msg: '账号或密码错误'
+            });
+        } catch (err) {
+            res.status(422).send({
+                msg: '账号不存在'
             });
         }
 
