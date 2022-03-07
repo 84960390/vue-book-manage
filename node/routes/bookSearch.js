@@ -39,20 +39,28 @@ bookSearch.get('/booksearchNoMerge',(req,res)=>{
 
     
     booksystem.query('select * from books where bookname like ?',[`%${req.query.bookname}%`],(err,result)=>{
-        result.forEach(item => {
-            item.picname='http://127.0.0.1:8000/book/picimg/'+item.picname;  
-        });
-        if(result.length==0){
-          return  res.send({
+        try{
+            result.forEach(item => {
+                item.picname='http://127.0.0.1:8000/book/picimg/'+item.picname;  
+            });
+            if(result.length==0){
+              return  res.send({
+                    status:401,
+                    msg:'暂无该数据',
+                })
+            }
+            res.send({
+                status:0,
+                msg:'查询成功',
+                data:result,
+            })
+        }catch{
+            res.send({
                 status:401,
-                msg:'暂无该数据',
+                msg:'未知错误',
+
             })
         }
-        res.send({
-            status:0,
-            msg:'查询成功',
-            data:result,
-        })
     })
 })
 module.exports=bookSearch;

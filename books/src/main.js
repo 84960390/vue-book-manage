@@ -5,7 +5,6 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import http from './network/request'
-axios.defaults.baseURL='http://127.0.0.1:8000';
 Vue.use(VueAxios, axios);
 Vue.prototype.$axios=http;
 

@@ -4,6 +4,6 @@ const booksystem=mysql.createPool({
     host:'127.0.0.1',
     user:'root',
     password:'admin',
-    database:'book_manage_system'
+    database:'books_manage_system'
 })
 module.exports=booksystem;
