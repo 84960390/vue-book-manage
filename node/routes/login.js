@@ -35,10 +35,8 @@ studentLogin.post('/studentlogin', (req, res) => {
 studentLogin.post('/adminlogin', (req, res) => {
     booksystem.query('select password,id,account from  administrator where account=?', req.body.account, (err, results) => {
         try {
-            console.log(err)
-            console.log(results)
                 if (results[0].password === req.body.password) {
-                    res.send({
+                   return  res.send({
                         status: 0,
                         msg: '登录成功',
                         data: results[0],
@@ -48,11 +46,13 @@ studentLogin.post('/adminlogin', (req, res) => {
 
                         )
                     })
-                    return
                 }
+                res.status(422).send({
+                    msg: '账号或密码错误'
+                });
         } catch {
             res.status(422).send({
-                msg: '账号或密码错误'
+                msg: '账号不存在'
             });
         }
 

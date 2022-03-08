@@ -13,14 +13,15 @@
 &ensp;&ensp;cd books  
 &ensp;&ensp;npm install  
 &ensp;&ensp;npm run serve  
-&ensp;6.打开提示的网址既可运行    
+&ensp;6.打开提示的网址既可运行，目前只能访问localhost开头的那个网址  
+&ensp;7.如需通过ip地址访问，请在vue.config.js文件中修改配置  
 打包运行，及线上运行方法：  
 &ensp;1.将根目录下books_manage_system.sql文件导入到数据库中    
 &ensp;2.在node/sql/booksystem.js文件内根据自己的数据库情况进行修改    
 &ensp;3.在books文件夹和node文件夹下分别执行npm install安装插件  
-&ensp; 4.在books文件夹下执行npm run build打包前端文件，打包完成后将该目录新增的dist文件夹复制到node文件夹中  
-&ensp;5.打包完成后将dist文件夹复制到node文件夹下  
-&ensp;6.解开node/index.js文件下第38行代码的注释  
+&ensp;4.注释掉books/src/network/request.js文件中的第4行代码 
+&ensp; 5.在books文件夹下执行npm run build打包前端文件，打包完成后将该目录新增的dist文件夹复制到node文件夹中  
+&ensp;6.打包完成后将dist文件夹复制到node文件夹下   
 &ensp;7.在node文件夹下执行node index.js  
 &ensp;8.之后在处于同一网络中的设备下，输入ip及端口号即可访问页面 eg:192.168.1.133:8000   
 展示：    

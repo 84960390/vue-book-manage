@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui';
 let http=axios.create({
-    // baseURL:'/api'
+    baseURL:'/api'
 })
 http.interceptors.request.use(config=>{
     if(window.localStorage.token){
