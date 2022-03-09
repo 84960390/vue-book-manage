@@ -1,4 +1,5 @@
 const express=require('express');
+const baseURL = require('../baseURL');
 const booksystem = require('../sql/booksystem');
 const studentLend=express.Router();
 studentLend.get('/studentlend',(req,res)=>{
@@ -21,7 +22,7 @@ studentLend.get('/studentlend',(req,res)=>{
                    booksystem.query('select * from books where id in (?) and lenduserid=?',[allLendbooks,req.user.userid],(err,results1)=>{
                         if(results1){
                          results1.forEach(item => {
-                              item.picname='http://127.0.0.1:8000/book/picimg/'+item.picname;               
+                              item.picname=baseURL+'/book/picimg/'+item.picname;               
                       });
           
                         }

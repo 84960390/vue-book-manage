@@ -1,4 +1,5 @@
 const express=require('express');
+const baseURL = require('../baseURL');
 const booksystem = require('../sql/booksystem');
 const lendBooks=express.Router();
 lendBooks.get('/lendbooks',(req,res)=>{
@@ -22,7 +23,7 @@ lendBooks.get('/lendbooks',(req,res)=>{
                             }
                             
                             booksystem.query('update students set lendbook=? where id=?',[newLendBook,req.query.userid],(err,result3)=>{
-                                booksInfo.picname='http://127.0.0.1:8000/book/picimg/'+booksInfo.picname;
+                                booksInfo.picname=baseURL+'/book/picimg/'+booksInfo.picname;
                                 if(result3.affectedRows==1) return res.status(200).send({msg:'借阅成功',data:booksInfo});
                             })
                         })
