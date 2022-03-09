@@ -1,6 +1,7 @@
 const express=require('express');
 const booksystem = require('../sql/booksystem');
 const bookReturn=express.Router();
+const baseURL=require('../baseURL')
 bookReturn.get('/bookreturn',(req,res)=>{
     booksystem.query('select * from books where bookid=?',[req.query.bookid],(err,results)=>{
        try{
@@ -22,7 +23,7 @@ bookReturn.get('/bookreturn',(req,res)=>{
              // 更新图书状态
              const booksInfo={...results[0],lenddate:null,lenduserid:null,returndate:null,status:0}; 
              booksystem.query('update books set ? where bookid=?',[booksInfo,req.query.bookid],(err,results1)=>{
-                 booksInfo.picname='http://127.0.0.1:8000/book/picimg/'+booksInfo.picname;    
+                 booksInfo.picname=baseURL+'/book/picimg/'+booksInfo.picname;    
                  console.log(results1)  
                  if(results1){
                    return  res.status(200).send({

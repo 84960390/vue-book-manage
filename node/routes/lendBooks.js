@@ -1,6 +1,7 @@
 const express=require('express');
 const booksystem = require('../sql/booksystem');
 const lendBooks=express.Router();
+const baseURL=require('../baseURL')
 lendBooks.get('/lendbooks',(req,res)=>{
     // 查找图书
     booksystem.query('select * from books where bookid=?',[req.query.bookid],(err,result)=>{
@@ -22,7 +23,7 @@ lendBooks.get('/lendbooks',(req,res)=>{
                             }
                             
                             booksystem.query('update students set lendbook=? where id=?',[newLendBook,req.query.userid],(err,result3)=>{
-                                booksInfo.picname='http://127.0.0.1:8000/book/picimg/'+booksInfo.picname;
+                                booksInfo.picname=baseURL+'/book/picimg/'+booksInfo.picname;
                                 if(result3.affectedRows==1) return res.status(200).send({msg:'借阅成功',data:booksInfo});
                             })
                         })

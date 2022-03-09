@@ -1,6 +1,7 @@
 const express=require('express');
 const booksystem = require('../sql/booksystem');
 const bookSearch=express.Router();
+const baseURL=require('../baseURL');
 bookSearch.get('/booksearch',(req,res)=>{
 
     booksystem.query('select * from books where bookname like ?',[`%${req.query.bookname}%`],(err,result)=>{
@@ -8,7 +9,7 @@ bookSearch.get('/booksearch',(req,res)=>{
         let searchResult=[];
         
         result.forEach(item => {
-            item.picname='http://127.0.0.1:8000/book/picimg/'+item.picname;  
+            item.picname=baseURL+'/book/picimg/'+item.picname;  
             item.booknumber+='-XX';
             // 计算馆藏数量及剩余可借        
             if(booknumber.indexOf(item.booknumber)==-1){
