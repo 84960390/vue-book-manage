@@ -64,4 +64,22 @@ studentInfo.get('/getallstudent',(req,res)=>{
     })   
 
 })
+studentInfo.post('/changeStudentInfo', (req, res) => {
+    // 修改用户信息
+   try{
+    booksystem.query('update students set ? where id=?',[req.body,req.body.id],(err, results) => {
+        if(results&&results.affectedRows){
+            return res.send({
+                status:200,
+                data:req.body,
+                msg:'修改成功'
+            })
+        }
+        res.status(401).send({msg:'修改失败'});
+    })
+   }catch(err){
+    res.status(401).send({msg:'修改失败'});
+   }
+
+})
 module.exports=studentInfo;
